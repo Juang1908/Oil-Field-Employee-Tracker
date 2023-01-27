@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS employeeChart;
 
 CREATE TABLE departmentChart (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    deptName VARCHAR(50) NOT NULL, 
+    deptName VARCHAR(50) NOT NULL 
 );
 
 CREATE TABLE roleChart (
@@ -25,8 +25,8 @@ CREATE TABLE employeeChart (
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
     roleId INT,
-    managerId INT
-    FOREIGN KEY (roleId) REFERENCES employeeChart(id) ON DELETE SET NULL,
-    FOREIGN KEY (managerId) REFERENCES roleChart(id) ON DELETE SET NULL,
+    managerId INT,
+    FOREIGN KEY (roleId) REFERENCES roleChart(id) ON DELETE SET NULL,
+    FOREIGN KEY (managerId) REFERENCES roleChart(id) ON DELETE SET NULL
 );
 

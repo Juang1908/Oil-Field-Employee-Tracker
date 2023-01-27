@@ -2,7 +2,7 @@
 const inquirer = require('inquirer'); 
 const mysql = require('mysql2');
 const table = require('console.table');
-
+//  Connection
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -15,7 +15,7 @@ db.connect((err) => {
     console.log('Connected to the employee_db database!');
     init();
 });
-
+// Questions
 const questions = [
   {
     type: 'list',
@@ -28,7 +28,7 @@ const questions = [
         'Add a department',
         'Add a role',
         'Add an employee',
-        'Update employy role',
+        'Update employee role',
         'Quit'
     ],
   }
@@ -68,7 +68,7 @@ function init(){
         }
     });
 }
-
+// View Dept. Role and Employees
 function viewDepartments() {
   let query = "SELECT * FROM departmentChart";
   db.query(query, (err, results) => {
@@ -94,7 +94,7 @@ function viewEmployees() {
       init();
   });
 }
-
+// Add Department
 function addDepartment() {
   inquirer.prompt([
       {
@@ -111,7 +111,7 @@ function addDepartment() {
       });
   });
 }
-
+// Add Role
 function addRole() {
   inquirer.prompt([
       {
@@ -130,15 +130,15 @@ function addRole() {
           name: 'salary'
       }
   ]).then(answer => {
-      let query = "INSERT INTO roleChart (deptId, title, salary) VALUES (?, ?, ?)";
-      db.query(query, [answer.deptId, answer.title, answer.salary], (err, results) => {
+      let query = "INSERT INTO roleChart (title, salary, deptId) VALUES (?, ?, ?)";
+      db.query(query, [answer.title, answer.salary, answer.deptId], (err, results) => {
           if (err) throw err;
           console.log(`Successfully added ${answer.title} role to the database.`);
           init();
       });
   });
 }
-
+// Add Employee
 function addEmployee() {
   inquirer
       .prompt([
@@ -157,7 +157,19 @@ function addEmployee() {
               message: 'Select the role for the employee:',
               name: 'roleId',
               choices: [
-                  // retrieve all roles from the database to list as choices
+                'Quality Manager',
+                'Production Manager',
+                'Engeneering Manager', 
+                'Testing Manager', 
+                'Human Resources', 
+                'Quality Lead', 
+                'Production Lead', 
+                'Engeneering Lead',
+                'Testing Lead',
+                'Quality Assistant',
+                'Production Assistant',
+                'Engeneering Assistant',
+                'Testing Assistant',
               ]
           },
           {
@@ -165,15 +177,25 @@ function addEmployee() {
               message: 'Select the manager for the employee:',
               name: 'managerId',
               choices: [
-                  // retrieve all employees from the database to list as choices
+                1,
+                2,
+                3, 
+                4, 
+            
               ]
           }
       ])
       .then(answer => {
-          // insert the new employee into the database using the answers provided
-      });
+        // Insert the new employee into the database using the answers provided
+        let query = "INSERT INTO employeeChart (roleId, firstName, lastName, managerId) VALUES (?,?,?,?)";
+        db.query(query, [answer.roleId, answer.firstName, answer.lastName, answer.managerId], (err, results) =>{
+            if (err) throw err;
+            console.log("Employee added successfully!");
+            init();
+        });
+    });
 }
-
+// Update Employee
 function updateEmployeeRole() {
   inquirer
       .prompt([
