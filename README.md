@@ -36,6 +36,12 @@ Repo Link: https://github.com/Juang1908/Oil-Field-Employee-Tracker
 
 ### Screenshot:
 
+[VIDEO](images/OIL%20&%20GAS%20EMPLOYEE%20TRACKER.webm)
+![IMAGE 1](images/Screenshot%201.jpg)
+![IMAGE 2](images/Screenshot%202.jpg)
+![IMAGE 3](images/Screenshot%203.jpg)
+![IMAGE 4](images/Screenshot%204.jpg)
+
 ### Questions? E-mail
 
 juang1908@icloud.com
