@@ -31,8 +31,8 @@ so that I can organize and plan my business.
 
 ### Usage:
 
-Video Link:
-Repo Link: https://github.com/Juang1908/Oil-Field-Employee-Tracker
+[OIL & GAS EMPLOYEE TRACKER.webm](https://user-images.githubusercontent.com/112872430/216464807-81e41e0e-684e-4247-8832-36265c1f3703.webm)
+
 
 ### Screenshot:
 
